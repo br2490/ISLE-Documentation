@@ -8,4 +8,3 @@ ISLE is a collaborative project that addresses two of the most significant pain-
 ## List of ISLE Repositories
 * ISLE: https://github.com/Islandora-Collaboration-Group/ISLE
 * ISLE Documentation: https://github.com/Islandora-Collaboration-Group/ISLE-Documentation
-* ISLE Development (bleeding edge version): https://github.com/Islandora-Collaboration-Group/ISLE-Development
