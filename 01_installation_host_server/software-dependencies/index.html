@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.1, mkdocs-material-3.0.6">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.6">
     
     
       
@@ -298,6 +298,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-5-clone-isle-repository" title="Step 5: Clone ISLE repository" class="md-nav__link">
+    Step 5: Clone ISLE repository
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -339,6 +346,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-5-clone-isle-repository_1" title="Step 5: Clone ISLE repository" class="md-nav__link">
+    Step 5: Clone ISLE repository
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -366,6 +380,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-3-clone-isle-repository" title="Step 3: Clone ISLE repository" class="md-nav__link">
+    Step 3: Clone ISLE repository
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -389,6 +410,13 @@
           <li class="md-nav__item">
   <a href="#step-2-docker-for-windows-installation" title="Step 2: Docker for Windows Installation" class="md-nav__link">
     Step 2: Docker for Windows Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-clone-isle-repository_1" title="Step 3: Clone ISLE repository" class="md-nav__link">
+    Step 3: Clone ISLE repository
   </a>
   
 </li>
@@ -756,7 +784,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../host_server_system_specifications/" title="Host Server Specifications" class="md-nav__link">
+    <a href="../server-requirements/" title="Host Server Specifications" class="md-nav__link">
       Host Server Specifications
     </a>
   </li>
@@ -1015,6 +1043,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-5-clone-isle-repository" title="Step 5: Clone ISLE repository" class="md-nav__link">
+    Step 5: Clone ISLE repository
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1056,6 +1091,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-5-clone-isle-repository_1" title="Step 5: Clone ISLE repository" class="md-nav__link">
+    Step 5: Clone ISLE repository
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1083,6 +1125,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#step-3-clone-isle-repository" title="Step 3: Clone ISLE repository" class="md-nav__link">
+    Step 3: Clone ISLE repository
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1106,6 +1155,13 @@
           <li class="md-nav__item">
   <a href="#step-2-docker-for-windows-installation" title="Step 2: Docker for Windows Installation" class="md-nav__link">
     Step 2: Docker for Windows Installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-clone-isle-repository_1" title="Step 3: Clone ISLE repository" class="md-nav__link">
+    Step 3: Clone ISLE repository
   </a>
   
 </li>
@@ -1151,153 +1207,186 @@
 <h3 id="step-1-install-server-prerequisites-and-git">Step 1: Install Server Prerequisites and Git</h3>
 <ul>
 <li>
-<p>Open a terminal on your local laptop or workstation and ssh to the CentOS server / VM:</p>
+<p>Open a terminal on your local laptop or workstation and ssh to the server / VM:</p>
 </li>
 <li>
 <p>You need to become root first</p>
-<ul>
-<li>If you are not already root, use either <code>sudo -s</code> or <code>sudo su</code> to become root.</li>
-</ul>
 </li>
 <li>
-<p>Install the following:</p>
-<ul>
-<li>
-<p><code>apt-get update</code></p>
+<p>If you are not already root, use either <code>sudo -s</code> or <code>sudo su</code> to become root.</p>
 </li>
 <li>
-<p><code>apt-get upgrade</code></p>
-</li>
-<li>
-<p><code>apt-get install -y openssl git htop ntp wget curl nano apt-transport-https ca-certificates software-properties-common</code></p>
-</li>
-</ul>
+<p>Update and Install the following required software:
+ <code>bash
+ apt-get update &amp;&amp; upgrade</code>
+ <code>bash
+ apt-get install -y openssl git htop ntp wget curl nano apt-transport-https ca-certificates software-properties-common</code></p>
 </li>
 </ul>
 <h3 id="step-2-install-docker">Step 2: Install Docker</h3>
 <ul>
-<li>
-<p><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code>  </p>
-</li>
-<li>
-<p><code>add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</code>  </p>
-</li>
-<li>
-<p><code>apt-get update</code>  </p>
-</li>
-<li>
-<p><code>apt-get install -y docker-ce</code>  </p>
-</li>
-<li>
-<p>Check if Docker is running <code>systemctl status docker</code></p>
+<li>Add the Docker Repository</li>
+</ul>
+<pre><code class="bash">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre>
+
+<pre><code class="bash">add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;
+</code></pre>
+
 <ul>
-<li>if it is not: <code>systemctl enable docker &amp;&amp; systemctl start docker</code></li>
+<li>Update package list</li>
 </ul>
-</li>
+<pre><code class="bash">apt-get update
+</code></pre>
+
+<ul>
+<li>Install Docker</li>
 </ul>
+<pre><code class="bash">apt-get install -y docker-ce
+</code></pre>
+
+<ul>
+<li>Enable and Start Docker</li>
+</ul>
+<pre><code class="bash">systemctl enable docker &amp;&amp; systemctl start docker
+</code></pre>
+
 <h3 id="step-3-install-docker-compose">Step 3: Install Docker-Compose</h3>
 <ul>
 <li>Copy and paste the command below</li>
 </ul>
-<pre><code class="bash">  curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-
+<pre><code class="bash">curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose &amp;&amp; chmod +x /usr/local/bin/docker-compose
 </code></pre>
 
 <ul>
-<li>
-<p><code>chmod +x /usr/local/bin/docker-compose</code></p>
-</li>
-<li>
-<p>Test the Installation</p>
-<ul>
-<li><code>docker-compose --version</code></li>
+<li>Test the Installation</li>
 </ul>
-</li>
-</ul>
+<pre><code class="bash">docker-compose --version
+</code></pre>
+
 <p><strong>Example output:</strong></p>
-<pre><code>docker-compose version 1.23.1 ...
-</code></pre>
-
+<p><code>docker-compose version 1.23.1 ...</code></p>
 <h3 id="step-4-add-your-user-to-the-docker-group">Step 4: Add your user to the <code>docker</code> group</h3>
+<p>This will allow your user to run docker commands, including the ones required to launch the entire ISLE stack.</p>
 <ul>
-<li>Copy and paste the following command as your normal user (<code>exit</code> to leave root)</li>
+<li>
+<p>If you are still <code>root</code> (<code>whoami</code>) type <code>exit</code> to become your normal user.</p>
+</li>
+<li>
+<p>Add yourself to the <code>docker</code> group.</p>
+</li>
 </ul>
 <pre><code class="bash">sudo usermod -aG docker $USER
 </code></pre>
 
 <ul>
-<li>Disconnect <code>exit</code> and reconnect for your groups to update.</li>
+<li>Disconnect <code>exit</code> and reconnect for your effective groups to update.</li>
 </ul>
+<h3 id="step-5-clone-isle-repository">Step 5: Clone ISLE repository</h3>
+<p><strong>Please note:</strong> The location you clone the repo to becomes your poject directory. It can be located anywhere and will include your configuration and log output of the containers.</p>
+<p>Please run these steps as your user.</p>
+<ul>
+<li>Clone the repo by running</li>
+</ul>
+<pre><code class="bash">git clone https://github.com/Islandora-Collaboration-Group/ISLE.git
+</code></pre>
+
+<ul>
+<li>Change to the directory containing ISLE.</li>
+</ul>
+<pre><code class="bash">cd ISLE
+</code></pre>
+
+<p>Your host server is now configured and ready to run ISLE. Continue on to section...</p>
 <hr />
 <h2 id="centos">CentOS</h2>
 <h3 id="step-1-install-server-prerequisites-and-git_1">Step 1: Install Server Prerequisites and Git</h3>
 <ul>
 <li>
-<p>Open a terminal on your local laptop or workstation and ssh to the CentOS server / VM:</p>
+<p>Open a terminal on your local laptop or workstation and ssh to the server / VM:</p>
 </li>
 <li>
 <p>You need to become root first</p>
-<ul>
-<li><code>sudo su</code>  </li>
-</ul>
+</li>
+<li>
+<p>If you are not already root, use either <code>sudo -s</code> or <code>sudo su</code> to become root.</p>
 </li>
 <li>
 <p>Add the RHEL/CENTOS epel-release package repository first</p>
-<ul>
-<li><code>yum install -y epel-release</code></li>
-</ul>
-</li>
-<li>
-<p>Install the following:</p>
-<ul>
-<li><code>yum install -y openssl git htop ntp wget curl nano</code></li>
-</ul>
 </li>
 </ul>
+<pre><code class="bash">yum install -y epel-release
+</code></pre>
+
+<ul>
+<li>Install the following:</li>
+</ul>
+<pre><code class="bash">yum install -y openssl git htop ntp wget curl nano
+</code></pre>
+
+<pre><code class="bash">yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre>
+
 <h3 id="step-2-install-docker_1">Step 2: Install Docker</h3>
 <ul>
-<li>
-<p><code>yum install -y yum-utils device-mapper-persistent-data lvm2</code></p>
-</li>
-<li>
-<p><code>yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</code></p>
-</li>
-<li>
-<p><code>yum install -y docker-ce</code></p>
-</li>
+<li>Add the Docker Repository</li>
 </ul>
+<pre><code class="bash">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo`
+</code></pre>
+
+<ul>
+<li>Install Docker</li>
+</ul>
+<pre><code class="bash">yum install -y docker-ce
+</code></pre>
+
 <h3 id="step-3-install-docker-compose_1">Step 3: Install Docker-Compose</h3>
 <ul>
 <li>Copy and paste the command below</li>
 </ul>
-<pre><code class="bash">  curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+<pre><code class="bash">curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose &amp;&amp; chmod +x /usr/local/bin/docker-compose
 </code></pre>
 
 <ul>
-<li>
-<p><code>chmod +x /usr/local/bin/docker-compose</code></p>
-</li>
-<li>
-<p>Test the Installation</p>
-<ul>
-<li><code>docker-compose --version</code></li>
+<li>Test the Installation</li>
 </ul>
-</li>
-</ul>
-<p><strong>Example output:</strong></p>
-<pre><code class="bash">docker-compose version 1.23.1 ...
+<pre><code class="bash">docker-compose --version
 </code></pre>
 
+<p><strong>Example output:</strong>
+<code>docker-compose version 1.23.1 ...</code></p>
 <h3 id="step-4-add-your-user-to-the-docker-group_1">Step 4: Add your user to the <code>docker</code> group</h3>
+<p>This will allow your user to run docker commands, including the ones required to launch the entire ISLE stack.</p>
 <ul>
-<li>Copy and paste the following command as your normal user (<code>exit</code> to leave root)</li>
+<li>
+<p>If you are still <code>root</code> (<code>whoami</code>) type <code>exit</code> to become your normal user.</p>
+</li>
+<li>
+<p>Add yourself to the <code>docker</code> group.</p>
+</li>
 </ul>
 <pre><code class="bash">sudo usermod -aG docker $USER
 </code></pre>
 
 <ul>
-<li>Disconnect <code>exit</code> and reconnect for your groups to update.</li>
+<li>Disconnect <code>exit</code> and reconnect for your effective groups to update.</li>
 </ul>
+<h3 id="step-5-clone-isle-repository_1">Step 5: Clone ISLE repository</h3>
+<p><strong>Please note:</strong> The location you clone the repo to becomes your poject directory. It can be located anywhere and will include your configuration and log output of the containers.</p>
+<p>Please run these steps as your user.</p>
+<ul>
+<li>Clone the repo by running</li>
+</ul>
+<pre><code class="bash">git clone https://github.com/Islandora-Collaboration-Group/ISLE.git
+</code></pre>
+
+<ul>
+<li>Change to the directory containing ISLE.</li>
+</ul>
+<pre><code class="bash">cd ISLE
+</code></pre>
+
+<p>Your host server is now configured and ready to run ISLE. Continue on to section...</p>
 <hr />
 <h2 id="mac">Mac</h2>
 <h3 id="step-1-git-installation">Step 1: Git Installation</h3>
@@ -1368,6 +1457,22 @@ git version 2.15.1
 <p>Please note: This process also installs the newest version of <code>docker-compose</code>.</p>
 </li>
 </ul>
+<h3 id="step-3-clone-isle-repository">Step 3: Clone ISLE repository</h3>
+<p><strong>Please note:</strong> The location you clone the repo to becomes your poject directory. It can be located anywhere and will include your configuration and log output of the containers.</p>
+<p>Please run these steps as your user.</p>
+<ul>
+<li>Clone the repo by running</li>
+</ul>
+<pre><code class="bash">git clone https://github.com/Islandora-Collaboration-Group/ISLE.git
+</code></pre>
+
+<ul>
+<li>Change to the directory containing ISLE.</li>
+</ul>
+<pre><code class="bash">cd ISLE
+</code></pre>
+
+<p>Your host server is now configured and ready to run ISLE. Continue on to section...</p>
 <hr />
 <h2 id="windows">Windows</h2>
 <h3 id="step-1-git-installation_1">Step 1: Git Installation</h3>
@@ -1410,6 +1515,22 @@ git version 2.15.1
 <p>Please note: This process also installs the newest version of <code>docker-compose</code>.</p>
 </li>
 </ul>
+<h3 id="step-3-clone-isle-repository_1">Step 3: Clone ISLE repository</h3>
+<p><strong>Please note:</strong> The location you clone the repo to becomes your poject directory. It can be located anywhere and will include your configuration and log output of the containers.</p>
+<p>Please run these steps as your user.</p>
+<ul>
+<li>Clone the repo by running</li>
+</ul>
+<pre><code class="bash">git clone https://github.com/Islandora-Collaboration-Group/ISLE.git
+</code></pre>
+
+<ul>
+<li>Change to the directory containing ISLE.</li>
+</ul>
+<pre><code class="bash">cd ISLE
+</code></pre>
+
+<p>Your host server is now configured and ready to run ISLE. Continue on to section...</p>
                 
                   
                 
@@ -1483,7 +1604,7 @@ git version 2.15.1
     
       <script src="../../assets/javascripts/application.5e60981f.js"></script>
       
-      <script>app.initialize({version:"1.0.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     
