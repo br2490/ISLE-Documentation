@@ -6,8 +6,7 @@ This Migration guide will help you migrate your existing production Islandora en
 
 ## Index of related documents
 * [Migration Example User Story](migration_example_user_story.md)
-* [Migration Export Checklist](migration_export_checklist.md)
-* [Migration Merge Checklist](migration_merge_checklist.md)
+* [Migration Backup and Restore](migration_export_checklist.md)
 * [Migration Reindex Process](migration_reindex_process.md)
 
 ---
@@ -28,8 +27,6 @@ This Migration guide will help you migrate your existing production Islandora en
 
 * Have [SSL Certificates](../glossary.md#systems) previously created for the web domain. (_Please work with the appropriate internal IT resource to provision these files for your domain_)
 
-* ISLE project has been cloned to BOTH your local laptop/workstation AND the ISLE host server
-
 * Disk space on or mounted to the Host Server large enough to store a **copy** of your fedora data store
 
 * Access to that server from your local workstation via SSH (`islandora` user with sudo privileges)
@@ -39,8 +36,6 @@ This Migration guide will help you migrate your existing production Islandora en
 * Usernames/Passwords for key parts of your stack which are used **for** the migration.
     * Drupal SQL information: username, password, database name can be obtained from your original `www/sites/default/settings.php`
     * Fedora SQL information: username, password, database name can be obtained from your original `fedora/server/config/fedora.fcfcg`
-    * Fedora users: please have a copy of your `fedora-users.xml`
-    * Tomcat users: please have a copy of your `tomcat-users.xml` but plan on generating new values for these logins for both the fedora and solr containers.
 
 * SQL dump (export) of the current production site's Drupal database. Ensure that the contents of any `cache` table are not exported.
 
@@ -52,7 +47,7 @@ This Migration guide will help you migrate your existing production Islandora en
 
 ## Overview
 
-**TL;DR** Copy old stuff over to host server and local laptop w/ checklist, create new private repo for configs, merge old configs into new configs w/ checklist, edit docker-compose.yml to point to new configs, spin up containers, go into fedora container & reindex, qc site - Done.
+**TL;DR** Copy old stuff over to host server and local laptop w/ checklist, create new private repo for configs, edit tomcat.env and .env, edit docker-compose.yml to point to new data locations, spin up containers, go into fedora container & reindex, qc site - Done.
 
 * Create a new directory on your remote ISLE Host server for the /data folders and files
 
@@ -77,7 +72,7 @@ This Migration guide will help you migrate your existing production Islandora en
 ## Detailed Steps
 
 * Setup a Private Code Repository
-      * Most of the work in this guide involves careful editing of the various configuration and settings files that customize the pieces of Islandora (database, repository, web-server, etc...).
+      * Most of the work in this guide involves editing of the .env and tomcat.env that customize the pieces of Islandora (database, repository, web-server, etc...).
       * Doing this work in a code repository makes it easier to correct errors and to repeat the process for additional servers without needing to replicate all the work.
       * Since the edits will include things like passwords, it's important to make this a private repository.
 
@@ -94,18 +89,7 @@ This Migration guide will help you migrate your existing production Islandora en
 
 * Open a terminal - navigate to `/opt/ISLE` or where you cloned the ISLE directory on your local workstation.
 
-* Create a directory named `yourdomain-config` (where "yourdomain" is your server domain name)
-
-     * Example:  `digital-collections.yourdomain.com-config`
-
-* Within the ISLE directory, locate the directory called `config/isle-newsite-sample` and copy all the contents to the newly created directory
-
-* `cd` into the newly copied and renamed `yourdomain-config` directory and type:
-
-    * `git init`
-    * _Initiates this directory as a code repository._
-
-* Type: `git remote add NameOfYourRepository URLofYourRepository`
+* Within the ISLE directory type: `git remote add NameOfYourRepository URLofYourRepository`
 
     * Connects your local repository to the remote you set up in the above steps.
     * **NOTE:** replace "NameOfYourRepository" and "URLofYourRepository" with the name of your repository and its URL
@@ -119,15 +103,9 @@ This area will be where all current Islandora production data is to be stored. T
 
 **ON your remote ISLE Host server:**
 
-* Create a directory named `yourdomain-data` (where "yourdomain" is your server domain name)
+* Create a directory named `yourdomain-data` (where "yourdomain" is your server domain name). This directory can be anywhere (e.g. an NFS)
 
     * Example:  `digital-collections.yourdomain.com-data`
-
-* Ensure that the islandora user has ownership and permissions to access this data.
-
-    * `chown -Rv islandora:islandora ~/digital-collections.yourdomain.com-data`
-
-    * Please note this path may change depending on how your ISLE host server storage area is setup.
 
 ---
 
