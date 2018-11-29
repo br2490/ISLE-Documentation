@@ -1,12 +1,12 @@
-This section is a checklist of materials to **COPY** from the current running institutional Islandora Production server(s) to the appropriate storage location / directory on the new ISLE directory. This guide assumes the remote server (new server) has a directory created for your data from production.
+This section is a checklist of materials to **COPY** from the current running institutional Islandora Production server(s) to the appropriate storage directory on the new ISLE host/server. This guide assumes the remote server has a directory created for your data from production. If you do not have a folder please login to your remote server and create one on a large enough partition to hold your production data.
 
-This is a backup and restore procedure. In short: we are copying the contents of your webroot, solr data/schema, fedora data (note: this will take time), and SSL certificates from an existing Islandora instance to a new host (server). 
+This is a backup and restore procedure. In short: we are copying the contents of your mysql databases (Drupal and Fedora), webroot, solr data/schema, fedora data, and SSL certificates from an existing Islandora instance to a new host (server). 
 
-**Please Note**: _Ubuntu / Debian style paths are used for all examples file locations below, endusers might have different locations for these files HOWEVER the file and directory names etc should be roughly the same._
+**Note**: Ensure you have adequate storage space available for the ISLE host server to accommodate a working copy of a production Islandora's associated configurations and data.
 
-**Caution**: Ensure you have adequate storage space available for the ISLE host server to accommodate a working copy of a production Islandora's associated configurations and data.
+**Note**: _Ubuntu / Debian style paths are used for all examples file locations below, endusers might have different locations for these files HOWEVER the file and directory names etc should be roughly the same._
 
-**Caution**: While the ISLE Project recommends use of export methods or tools such as rsync, scp etc., it assumes that endusers are familiar with them and are aware of possible dangers of improperly exporting or copying production data. Ensure adequate backups of any production system(s) are made prior to any attempts. If you are not familiar or are uncomfortable with these processes, it is highly advisable to work with an appropriate IT resource.
+**Note**: While the ISLE Project recommends use of export methods or tools such as rsync, scp etc., it assumes that endusers are familiar with them and are aware of possible dangers of improperly exporting or copying production data. Ensure adequate backups of any production system(s) are made prior to any attempts. If you are not familiar or are uncomfortable with these processes, it is highly advisable to work with an appropriate IT resource.
 
 ---
 
